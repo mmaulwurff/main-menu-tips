@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+filename=tips-$(git describe --abbrev=0 --tags).pk3
+
+rm -f $filename
+zip -R $filename "*.md" "*.txt" "*.zs"
+gzdoom "$@" -file $filename
